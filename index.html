@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Website grapher</title>
+        <link rel="stylesheet" href="boostrap.css" />
+        <link rel="stylesheet" href="style.css" />
+
+        <!-- Fixes stuff according to Stack Overflow  -->
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+        <!-- Alchemy -->
+        <link rel="stylesheet" href="alchemy/alchemy.min.css" />
+        <link rel="stylesheet" href="alchemy/styles/vendor.css" />
+        <script src="alchemy/scripts/vendor.js"></script>
+        <script src="alchemy/alchemy.js"></script>
+    </head>
+    <body>
+        <div id="wrapper" class="container">
+            <div class="row" style="height: 100%;">
+                <div id="panel1" class="col-sm">
+                    <div id="alchemy" class="alchemy"></div>
+                    <script type="text/javascript">
+                        var config = {
+                            dataSource: 'charlize.json',
+                            graphHeight: function() {return $('#panel1')[0].getBoundingClientRect().height;},
+                            graphWidth: function() {return $('#panel1')[0].getBoundingClientRect().width}
+                        };
+
+                        alchemy = new Alchemy(config);
+                    </script>
+                </div>
+                <div id="panel2" class="col-sm-4">
+                            <h1>Settings</h1>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="url">URL: </label>
+                                <input type="text" placeholder="http://google.com/" name="url" />
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
