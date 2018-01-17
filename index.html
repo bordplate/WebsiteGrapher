@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="alchemy/styles/vendor.css" />
         <script src="alchemy/scripts/vendor.js"></script>
         <script src="alchemy/alchemy.js"></script>
+
+        <script src="settings.js"></script>
     </head>
     <body>
         <div id="wrapper" class="container">
@@ -21,7 +23,13 @@
                     <div id="alchemy" class="alchemy"></div>
                     <script type="text/javascript">
                         var config = {
-                            dataSource: 'charlize.json',
+                            dataSource: {
+                                "nodes": [ {
+                                    "caption": "Test",
+                                    "type": "whatevs",
+                                    "id": 1
+                                } ]
+                            },
                             graphHeight: function() {return $('#panel1')[0].getBoundingClientRect().height;},
                             graphWidth: function() {return $('#panel1')[0].getBoundingClientRect().width}
                         };
@@ -45,15 +53,20 @@
                     </script>
                 </div>
                 <div id="panel2" class="col-sm-4">
-                            <h1>Settings</h1>
+                    <div id="setting-pane">
+                        <h1>Settings</h1>
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <label for="url">URL: </label>
                                 <input type="text" placeholder="http://google.com/" name="url" />
+                                <input type="button" value="Start" name="start-button" />
                             </div>
                         </form>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <script src="app.js"></script>
     </body>
 </html>
