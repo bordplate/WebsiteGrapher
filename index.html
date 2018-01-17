@@ -27,6 +27,21 @@
                         };
 
                         alchemy = new Alchemy(config);
+
+                        // Rescale graph view on window resize
+                        window.addEventListener('resize', function() {
+                            $("#alchemy").height($('#panel1').height());
+                            $("#alchemy").width($('#panel1').width());
+
+                            // Something is messing up sizing down, fix it
+                            if ($("#panel1").width() > $(document).width()-250) {
+                                $("#panel1").width($("#panel1").width()-250);
+                            }
+
+                            if ($("#alchemy").height() >= $(document).height()) {
+                                $("#alchemy").height($(document).height());
+                            }
+                        });
                     </script>
                 </div>
                 <div id="panel2" class="col-sm-4">
