@@ -1,7 +1,8 @@
 const Crawler = require('crawler');
+const { URL } = require('url');
 
 let SiteCrawler = function(website) {
-    const url = website;
+    self.url = new URL(website);
 
     let c = new Crawler({
         maxConnections: 10,
@@ -15,9 +16,15 @@ let SiteCrawler = function(website) {
                 // Find all links to recursively go through website
                 // This should be extended to find JS-clickable links (?)
                 res.$('a').each(function(index, a) {
-                    let linkTarget = res.$(a).attr("href");
-                    console.log("Found link: " + res.$(a).attr("href")); 
-                    c.queue(linkTarget);
+                    console.log("URL: " + self.url.href);
+                   let linkTarget = new URL(res.$(a).attr("href"), self.url.href);
+                   console.log("Found link: " + res.$(a).attr("href"));
+
+                   if (linkTarget.hostname == self.url.hostname) {
+                        c.queue(linkTarget.href);
+                   } else {
+                        console.log("Hostname does not match original, not following.");
+                   }
                 });
             }
             done();
@@ -25,7 +32,7 @@ let SiteCrawler = function(website) {
     });
 
     this.start = function() {
-        c.queue(url);
+        c.queue(self.url.href);
     }
 }
 
