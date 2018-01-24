@@ -19,6 +19,6 @@
   "homepage": "https://github.com/bordplate/WebsiteGrapher",
   "dependencies": {
     "crawler": "^1.1.2",
-    "electron": "^1.7.10"
+    "electron": "^1.7.11"
   }
 }
