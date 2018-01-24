@@ -3,16 +3,16 @@
 const SiteCrawler = require('./site-crawler.js');
 
 let Settings = function() {
-    const startButton = $("input[name='start-button']");
-    const urlInput = $("input[name='url']");
-    const panel = $("#settings-pane");
+    self.startButton = $("input[name='start-button']");
+    self.urlInput = $("input[name='url']");
+    self.panel = $("#settings-pane");
 
-    let url = "secret stuff?";
+    self.url = "secret stuff?";
 
     this.startScan = function(url) {
-        console.log(this.url);
-        this.url = url;
-        console.log(this.url);
+        console.log(self.url);
+        self.url = url;
+        console.log(self.url);
     }
 
     // Set up listeners

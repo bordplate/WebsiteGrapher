@@ -12,13 +12,14 @@ let SiteCrawler = function(website) {
                 console.log(error);
             } else {
                 console.log("Title: " + res.$("title").text());
+                console.log("Following: " + res.options.uri);
 
                 // Find all links to recursively go through website
                 // This should be extended to find JS-clickable links (?)
                 res.$('a').each(function(index, a) {
-                    console.log("URL: " + self.url.href);
+                   //console.log("URL: " + self.url.href);
                    let linkTarget = new URL(res.$(a).attr("href"), self.url.href);
-                   console.log("Found link: " + res.$(a).attr("href"));
+                   //console.log("Found link: " + res.$(a).attr("href"));
 
                    if (linkTarget.hostname == self.url.hostname) {
                         c.queue(linkTarget.href);
